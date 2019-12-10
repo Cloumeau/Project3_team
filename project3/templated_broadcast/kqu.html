@@ -1,0 +1,31 @@
+<html>
+<head>
+ <link type= "text/css" rel="stylesheet" href="styles/sty.css" media="screen">
+    <script>
+    /*documention for XMLHttpRequest
+    https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest */
+    var Generate = function() {
+    var request = new XMLHttpRequest();
+    request.open("GET",
+    "https://api.kanye.rest",true );
+    
+    /* onload event is an event */
+    request.onload = function() {
+        var data = JSON.parse(this.response);
+        var QUOTE = data.quote;
+        document.getElementById("quote").innerHTML=QUOTE;
+
+		
+    };    
+    request.send();
+	};
+</script>
+</head>
+<body onload="Generate()">
+<p><Strong>Random Quote</Strong></p>
+<p id="quote"></p>
+<button onclick="Generate()">Generate</button>
+</body>
+
+<img src="kanyewest.jpg" alt="Profile" width="600" height="345" id="img">
+</html>
